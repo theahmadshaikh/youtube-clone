@@ -3,9 +3,11 @@ import { useState } from "react";
 import { FaBars, FaSearch, FaUserCircle } from "react-icons/fa";
 import HeaderLogo from "./HeaderLogo";
 import MobileSearchBar from "./MobileSearchBar";
+import { useSidebarStore} from "../../stores/useSideBarStore";
 
 const MobileHeader: React.FC = () => {
   const [isMobileSearch, setIsMobileSearch] = useState(false);
+  const toggleSidebar = useSidebarStore((s) => s.toggle);
 
   return (
     <div className="flex w-full items-center px-4 py-2 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
@@ -19,7 +21,7 @@ const MobileHeader: React.FC = () => {
               className="text-xl p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition cursor-pointer"
               aria-label="Menu"
             >
-              <FaBars />
+              <FaBars onClick={toggleSidebar} />
             </button>
             <HeaderLogo />
           </div>

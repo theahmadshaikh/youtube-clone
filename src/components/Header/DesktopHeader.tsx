@@ -1,15 +1,19 @@
 // src/components/Header/DesktopHeader.tsx
 import { FaBars, FaSearch, FaUserCircle } from "react-icons/fa";
 import HeaderLogo from "./HeaderLogo";
+import { useSidebarStore } from "../../stores/useSideBarStore";
 
 const DesktopHeader: React.FC = () => {
-  return (
+    const toggleSidebar = useSidebarStore((s) => s.toggle);
+  
+    return (
     <div className="w-full flex items-center justify-between px-4 py-4 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
       {/* Left: Hamburger + Logo */}
       <div className="flex items-center gap-4">
         <button
           className="text-2xl p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition cursor-pointer"
           aria-label="Menu"
+          onClick={toggleSidebar}
         >
           <FaBars />
         </button>
